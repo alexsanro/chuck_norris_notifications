@@ -2,7 +2,7 @@
 const { app, BrowserWindow } = require('electron')
 const { Menu, Tray } = require('electron')
 const path = require('path');
-require('./renderer.js')
+var renderer = require('./renderer.js')
 
 let trayChuck = null
 app.on('ready', () => {
@@ -18,6 +18,8 @@ app.on('ready', () => {
 
   // Llama esto otra vez en Linux debido a que modificamos el menú de contexto
   trayChuck.setContextMenu(contextMenu)
+
+  renderer.startCallsToYourBoss();
 })
 
 // Quit when all windows are closed.
