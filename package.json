@@ -5,9 +5,10 @@
       "target": "NSIS",
       "icon": "icons/icono.ico"
     },
-    "extraFiles": "assets/*"
+    "extraFiles": "assets/*",
+    "asar":false
   },
-  "name": "electron-quick-start",
+  "name": "Chuck_App",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",

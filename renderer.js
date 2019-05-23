@@ -9,10 +9,10 @@ const path = require('path');
 function notifier(data) {
     new WindowsToaster().notify(
         {
-            appName: "",
+            appName: "chuck_norris_id",
             title: 'Chuck Norris is your boss', 
             message: data.value, 
-            icon: 'assets/images/chuck_norris.png',
+            icon: path.join(__dirname, 'assets/images/chuck_norris.png'),
             sound: true, 
             wait: false, 
             remove: void 0, 
