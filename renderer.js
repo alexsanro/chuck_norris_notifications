@@ -12,7 +12,7 @@ function notifier(data) {
             appName: "",
             title: 'Chuck Norris is your boss', 
             message: data.value, 
-            icon: path.join(__dirname, 'icons/chuck_norris.png'), 
+            icon: 'assets/images/chuck_norris.png',
             sound: true, 
             wait: false, 
             remove: void 0, 

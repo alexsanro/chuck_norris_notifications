@@ -6,7 +6,7 @@ var renderer = require('./renderer.js')
 
 let trayChuck = null
 app.on('ready', () => {
-  trayChuck = new Tray(path.join(__dirname, 'icons/icono.ico'))
+  /*trayChuck = new Tray(path.join(__dirname, 'icons/icono.ico'))
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'Close',
@@ -17,7 +17,19 @@ app.on('ready', () => {
   ])
 
   // Llama esto otra vez en Linux debido a que modificamos el menú de contexto
-  trayChuck.setContextMenu(contextMenu)
+  trayChuck.setContextMenu(contextMenu)*/
+
+  mainWindow = new BrowserWindow({
+    width: 600,
+    height: 600,
+    alwaysOnTop:true,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  })
+
+  // and load the index.html of the app.
+  mainWindow.loadFile('index.html')
 
   renderer.startCallsToYourBoss();
 })
