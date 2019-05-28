@@ -6,9 +6,10 @@
       "icon": "icons/icono.ico"
     },
     "extraFiles": "assets/*",
-    "asar":false
+    "asar": true,
+    "extraResources": "assets/images"
   },
-  "name": "Chuck_App",
+  "name": "ChuckAPP",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
@@ -32,6 +33,7 @@
     "electron-builder": "^20.40.2"
   },
   "dependencies": {
+    "electron-is-dev": "^1.1.0",
     "node-notifier": "^5.4.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
