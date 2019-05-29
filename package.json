@@ -2,8 +2,14 @@
   "build": {
     "appId": "chuck_norris_id",
     "win": {
-      "target": "NSIS",
+      "target": ["nsis"],
       "icon": "icons/icono.ico"
+    },
+    "nsis":{
+      "installerIcon": "icons/icono.ico",
+      "uninstallerIcon": "icons/icono.ico",
+      "license": "LICENSE",
+      "runAfterFinish": true
     },
     "extraFiles": "assets/*",
     "asar": true,
