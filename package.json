@@ -9,15 +9,18 @@
       "installerIcon": "icons/icono.ico",
       "uninstallerIcon": "icons/icono.ico",
       "license": "LICENSE",
-      "runAfterFinish": true
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
     },
     "extraFiles": "assets/*",
     "asar": true,
     "extraResources": "assets/images"
   },
   "name": "ChuckAPP",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "version": "0.0.1",
+  "description": "An application for notifier some phrases about Chuck Norris. HE IS YOUR BOSS!!",
   "main": "main.js",
   "scripts": {
     "postinstall": "install-app-deps",
@@ -26,13 +29,11 @@
     "dist": "build"
   },
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Chuck",
+    "Norris",
+    "Notification"
   ],
-  "author": "GitHub",
+  "author": "alexsanro",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^5.0.1",
