@@ -25,7 +25,8 @@ function notifier(data) {
             sound: true, 
             wait: false, 
             remove: void 0, 
-            install: void 0
+            install: void 0,
+            timeout: 5,
         },
         function (error, response) {
             console.log(response);
@@ -53,5 +54,5 @@ function startCallsToYourBoss(){
 }
 
 exports.startCallsToYourBoss = () => {
-    startCallsToYourBoss();
+    intervalSeted = setInterval(function () { startCallsToYourBoss() }, 60000);
 }
