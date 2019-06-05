@@ -5,8 +5,8 @@ const { Menu, Tray } = require('electron')
 const path = require('path');
 const settings = require('electron-settings');
 var renderer = require('./renderer.js');
-var timerValue = 60000;
 var contextMenu = "";
+var timerValue = 60000;
 
 let trayChuck = null
 app.on('ready', () => {
@@ -37,6 +37,17 @@ app.on('activate', function () {
 function generateTray(){
   trayChuck = new Tray(path.join(__dirname, 'icons/icono.ico'))
   contextMenu = Menu.buildFromTemplate([
+    {
+      label: '1min',
+      type: 'radio',
+      checked: false,
+      click: function () {
+        settings.set('timer', {
+          value: 60000,
+        });
+        renderer.startCallsToYourBoss(60000);
+      }
+    },
     {
       label: '5min',
       type: 'radio',
@@ -84,15 +95,16 @@ function generateTray(){
 function setMenuSettingsDefault(){
   switch (settings.get('timer.value')) {
     case 300000:
-      contextMenu.items[0].checked = true
+      contextMenu.items[1].checked = true
       break;
     case 600000:
-        contextMenu.items[1].checked = true
-        break;
-      case 1800000:
         contextMenu.items[2].checked = true
         break;
+      case 1800000:
+        contextMenu.items[3].checked = true
+        break;
     default:
+        contextMenu.items[0].checked = true
       break;
   }
 }

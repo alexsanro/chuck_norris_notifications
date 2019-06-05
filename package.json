@@ -14,7 +14,8 @@
       "oneClick": false,
       "perMachine": false,
       "allowElevation": true,
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall":true
     },
     "extraFiles": "assets/*",
     "asar": true,
