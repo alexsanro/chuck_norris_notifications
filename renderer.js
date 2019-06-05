@@ -2,26 +2,19 @@ var rp = require('request-promise');
 const WindowsToaster = require('node-notifier').WindowsToaster;
 const path = require('path');
 const isDev = require('electron-is-dev');
+var intervalSeted = "";
 
 /**
  * Notificador // Con TOAST
  * @param {*} data 
  */
 function notifier(data) {
-    var directory = __dirname;
-    var nameApp = "";
-
-    if (!isDev) {
-        directory = process.resourcesPath;
-        nameApp = "chuck_norris_id";
-    }
-
     new WindowsToaster().notify(
         {
-            appName: nameApp,
+            appName: nameApp(),
             title: 'Chuck Norris is your boss', 
             message: data.value, 
-            icon: path.join(directory, 'assets' ,'images', 'chuck_norris.png'),
+            icon: path.join(pathDirectoryRootEnvironment(), 'assets' ,'images', 'chuck_norris.png'),
             sound: true, 
             wait: false, 
             remove: void 0, 
@@ -49,10 +42,31 @@ function requestApiChuck() {
     })
 }
 
+function pathDirectoryRootEnvironment(){
+    var directory = __dirname;
+
+    if (!isDev) {
+        directory = process.resourcesPath;
+    }
+
+    return directory;
+}
+
+function nameApp(){
+    var nameApp = "";
+
+    if (!isDev) {
+        nameApp = "chuck_norris_id";
+    }
+
+    return nameApp;
+}
+
 function startCallsToYourBoss(){
     requestApiChuck();
 }
 
-exports.startCallsToYourBoss = () => {
-    intervalSeted = setInterval(function () { startCallsToYourBoss() }, 60000);
+exports.startCallsToYourBoss = (timeOnMiliseconds) => {
+    clearInterval(intervalSeted);
+    intervalSeted = setInterval(function () { startCallsToYourBoss() }, timeOnMiliseconds);
 }

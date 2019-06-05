@@ -1,25 +1,24 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require('electron')
+const {dialog} = require('electron')
 const { Menu, Tray } = require('electron')
 const path = require('path');
+const settings = require('electron-settings');
 var renderer = require('./renderer.js');
+var timerValue = 60000;
+var contextMenu = "";
 
 let trayChuck = null
 app.on('ready', () => {
-  trayChuck = new Tray(path.join(__dirname, 'icons/icono.ico'))
-  const contextMenu = Menu.buildFromTemplate([
-    {
-      label: 'Close',
-      click: function () {
-        app.quit();
-      }
-    },
-  ])
+  generateTray();
+  setMenuSettingsDefault();
 
-  // Llama esto otra vez en Linux debido a que modificamos el menú de contexto
-  trayChuck.setContextMenu(contextMenu)
+  if (settings.has('timer.value')) {
+    timerValue = settings.get('timer.value')
+  }
 
-  renderer.startCallsToYourBoss();
+  //Por defecto es 1min
+  renderer.startCallsToYourBoss(timerValue);
 })
 
 // Quit when all windows are closed.
@@ -35,5 +34,65 @@ app.on('activate', function () {
   if (mainWindow === null) createWindow()
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+function generateTray(){
+  trayChuck = new Tray(path.join(__dirname, 'icons/icono.ico'))
+  contextMenu = Menu.buildFromTemplate([
+    {
+      label: '5min',
+      type: 'radio',
+      checked: false,
+      click: function () {
+        settings.set('timer', {
+          value: 300000,
+        });
+        renderer.startCallsToYourBoss(300000);
+      }
+    },
+    {
+      label: '10min',
+      type: 'radio',
+      checked: false,
+      click: function () {
+        settings.set('timer', {
+          value: 600000,
+        });
+        renderer.startCallsToYourBoss(600000);
+      }
+    },
+    {
+      label: '30min',
+      type: 'radio',
+      checked: false,
+      click: function () {
+        settings.set('timer', {
+          value: 1800000,
+        });
+        renderer.startCallsToYourBoss(1800000);
+      }
+    },
+    {
+      label: 'Close',
+      click: function () {
+        app.quit();
+      }
+    }
+  ])
+
+  trayChuck.setContextMenu(contextMenu);
+}
+
+function setMenuSettingsDefault(){
+  switch (settings.get('timer.value')) {
+    case 300000:
+      contextMenu.items[0].checked = true
+      break;
+    case 600000:
+        contextMenu.items[1].checked = true
+        break;
+      case 1800000:
+        contextMenu.items[2].checked = true
+        break;
+    default:
+      break;
+  }
+}

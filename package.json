@@ -2,10 +2,12 @@
   "build": {
     "appId": "chuck_norris_id",
     "win": {
-      "target": ["nsis"],
+      "target": [
+        "nsis"
+      ],
       "icon": "icons/icono.ico"
     },
-    "nsis":{
+    "nsis": {
       "installerIcon": "icons/icono.ico",
       "uninstallerIcon": "icons/icono.ico",
       "license": "LICENSE",
@@ -41,6 +43,7 @@
   },
   "dependencies": {
     "electron-is-dev": "^1.1.0",
+    "electron-settings": "^3.2.0",
     "node-notifier": "^5.4.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
