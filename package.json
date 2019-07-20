@@ -8,23 +8,23 @@
       "icon": "icons/icono.ico"
     },
     "nsis": {
-      "installerIcon": "icons/icono.ico",
-      "uninstallerIcon": "icons/icono.ico",
+      "installerIcon": "assets/icono.ico",
+      "uninstallerIcon": "assets/icono.ico",
       "license": "LICENSE",
       "oneClick": false,
       "perMachine": false,
       "allowElevation": true,
       "allowToChangeInstallationDirectory": true,
-      "deleteAppDataOnUninstall":true
+      "deleteAppDataOnUninstall": true
     },
     "extraFiles": "assets/*",
     "asar": true,
-    "extraResources": "assets/images"
+    "extraResources": "assets/*"
   },
   "name": "ChuckAPP",
   "version": "0.0.1",
   "description": "An application for notifier some phrases about Chuck Norris. HE IS YOUR BOSS!!",
-  "main": "main.js",
+  "main": "app/main.js",
   "scripts": {
     "postinstall": "install-app-deps",
     "start": "electron .",

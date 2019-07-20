@@ -4,7 +4,7 @@ const {dialog} = require('electron')
 const { Menu, Tray } = require('electron')
 const path = require('path');
 const settings = require('electron-settings');
-var renderer = require('./renderer.js');
+var renderer = require('./scripts/renderer.js');
 var contextMenu = "";
 var timerValue = 60000;
 
@@ -35,7 +35,7 @@ app.on('activate', function () {
 })
 
 function generateTray(){
-  trayChuck = new Tray(path.join(__dirname, 'icons/icono.ico'))
+  trayChuck = new Tray(path.join('./assets/icono.ico'))
   contextMenu = Menu.buildFromTemplate([
     {
       label: '1min',

@@ -14,7 +14,7 @@ function notifier(data) {
             appName: nameApp(),
             title: 'Chuck Norris is your boss', 
             message: data.value, 
-            icon: path.join(pathDirectoryRootEnvironment(), 'assets' ,'images', 'chuck_norris.png'),
+            icon: path.join(pathDirectoryRootEnvironment(), './assets', 'chuck_norris.png'),
             sound: true, 
             wait: false, 
             remove: void 0, 
@@ -43,7 +43,7 @@ function requestApiChuck() {
 }
 
 function pathDirectoryRootEnvironment(){
-    var directory = __dirname;
+    var directory = '';
 
     if (!isDev) {
         directory = process.resourcesPath;
