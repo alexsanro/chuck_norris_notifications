@@ -29,12 +29,12 @@ https://api.chucknorris.io/
 
 ## Used
 
-- electron v5.0.1 -> Bones of aplication.
-- electron-builder v20.40.2 -> To build the code on an executable.
-- electron-is-dev v1.1.0 -> To know the environment.
-- node-notifier v5.4.0 -> To run the notifications on windows.
-- request v2.88.0 -> To call the API.
-- request-promise v4.2.4
+- **electron v5.0.1** -> Bones of aplication.
+- **electron-builder v20.40.2** -> To build the code on an executable.
+- **electron-is-dev v1.1.0** -> To know the environment.
+- **node-notifier v5.4.0** -> To run the notifications on windows.
+- **request v2.88.0** -> To call the API.
+- **request-promise v4.2.4**
 
 ## License
 
